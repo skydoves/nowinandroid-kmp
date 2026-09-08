@@ -17,20 +17,14 @@
 package com.skydoves.nowinandroid
 
 import android.app.Application
-import androidx.work.Configuration
 import com.skydoves.nowinandroid.core.data.sync.initializeSync
 import com.skydoves.nowinandroid.di.AndroidAppGraph
 import dev.zacsweers.metro.createGraphFactory
 
-class NiaApplication :
-    Application(),
-    Configuration.Provider {
+class NiaApplication : Application() {
 
     lateinit var appGraph: AndroidAppGraph
         private set
-
-    override val workManagerConfiguration: Configuration
-        get() = Configuration.Builder().build()
 
     override fun onCreate() {
         super.onCreate()
