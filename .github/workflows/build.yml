@@ -1,0 +1,89 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  spotless:
+    name: Spotless
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew spotlessCheck --stacktrace
+
+  jvm:
+    name: Unit tests (JVM, Android)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      # The desktop and Android host targets run the same commonTest sources.
+      - run: ./gradlew desktopTest testAndroidHostTest --stacktrace
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-reports
+          path: '**/build/reports/tests/**'
+
+  android:
+    name: Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew :app:androidApp:assembleDebug --stacktrace
+
+  apple:
+    name: iOS framework + desktop
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew :app:shared:linkDebugFrameworkIosSimulatorArm64 --stacktrace
+      - run: ./gradlew iosSimulatorArm64Test --stacktrace
+      - run: ./gradlew :app:desktopApp:assemble --stacktrace
+
+  navgraph:
+    name: Navigation graph check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      # Every destination and edge is declared in a :feature:*:impl module — :app:shared holds none
+      # of its own, so scoping this to :app:shared would check an empty baseline and always pass.
+      # The unqualified task covers all seven committed .nav files; refresh them with `./gradlew navDump`.
+      - run: ./gradlew navCheck --stacktrace
+      - run: ./gradlew exportNavGraphImage --stacktrace
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nav-graph
+          path: '**/build/navgraph/**'
