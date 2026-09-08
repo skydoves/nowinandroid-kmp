@@ -1,0 +1,59 @@
+name: Deploy Web
+
+# Publishes the Kotlin/Wasm build to GitHub Pages, so the app can be tried in a browser without
+# installing anything. Pages allows a single deployment per repository, which is why this workflow
+# owns it and the preview gallery publishes a downloadable artifact instead.
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deployments race for the one Pages site. In-progress runs finish rather than being
+# cancelled, so a deploy is never interrupted half way.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build wasm distribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - run: ./gradlew :app:webApp:wasmJsBrowserDistribution --stacktrace
+
+      # Pages runs Jekyll over the upload unless told not to, which would drop the files webpack
+      # names with a leading underscore.
+      - name: Disable Jekyll processing
+        run: touch app/webApp/build/dist/wasmJs/productionExecutable/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/webApp/build/dist/wasmJs/productionExecutable
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

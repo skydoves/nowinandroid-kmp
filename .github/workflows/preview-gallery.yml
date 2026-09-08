@@ -1,7 +1,8 @@
 name: Preview Gallery
 
-# Captures every @Preview on a real emulator with Compose HotSwan and publishes the generated
-# catalog to GitHub Pages.
+# Captures every @Preview on a real emulator with Compose HotSwan and uploads the generated
+# catalog as a build artifact. GitHub Pages allows one deployment per repository and the web app
+# owns it, so the gallery is downloaded from the run rather than hosted.
 #
 # HotSwan renders previews inside the running app process rather than in a headless renderer, so
 # the captures include everything a device does: Compose Multiplatform string resources, the real
@@ -17,8 +18,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: preview-gallery
@@ -83,20 +82,3 @@ jobs:
           path: .hotswan/preview-captures/
           retention-days: 30
 
-      # The task writes an index.html beside the PNGs, so the artifact is already a whole site.
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .hotswan/preview-captures/
-
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: capture
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/configure-pages@v5
-      - id: deployment
-        uses: actions/deploy-pages@v4

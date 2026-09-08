@@ -44,12 +44,24 @@ internal actual fun imageHttpClient(httpClient: HttpClient): HttpClient = httpCl
                 val url = request.url
                 if (url.host == FIREBASE_STORAGE_HOST) {
                     localIconNameOf(url.encodedPathSegments)?.let { name ->
-                        request.url.takeFrom("${window.location.origin}/$LOCAL_TOPIC_ICONS/$name")
+                        request.url.takeFrom("${baseUrl()}/$LOCAL_TOPIC_ICONS/$name")
                     }
                 }
             }
         },
     )
+}
+
+/**
+ * The directory this page is served from.
+ *
+ * Not `window.location.origin`: on GitHub Pages the app lives under a repository subpath, and an
+ * origin-rooted URL would miss it. Taking the path up to the last `/` works both there and at the
+ * root of a dev server.
+ */
+private fun baseUrl(): String {
+    val directory = window.location.pathname.substringBeforeLast('/', missingDelimiterValue = "")
+    return "${window.location.origin}$directory"
 }
 
 /**
