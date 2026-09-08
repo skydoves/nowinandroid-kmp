@@ -5,10 +5,15 @@
   <a href="https://android-arsenal.com/api?level=24"><img alt="API" src="https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat"/></a>
   <a href="https://kotlinlang.org/docs/multiplatform.html"><img alt="Kotlin Multiplatform" src="https://img.shields.io/badge/Kotlin-Multiplatform-7F52FF.svg"/></a>
   <a href="https://github.com/skydoves"><img alt="Profile" src="https://skydoves.github.io/badges/skydoves.svg"/></a>
+  <a href="https://skydoves.github.io/nowinandroid-kmp/"><img alt="Web demo" src="https://img.shields.io/badge/Web-Live%20Demo-4285F4.svg"/></a>
 </p>
 
 <p align="center">
 📱 Now in Android KMP is a full Kotlin Multiplatform port of Google's Now in Android sample, running the same screens, ViewModels, navigation, and data layer on <b>Android, iOS, desktop, and the browser</b> from one shared codebase.
+</p>
+
+<p align="center">
+🌐 <b><a href="https://skydoves.github.io/nowinandroid-kmp/">Open the web demo</a></b> to run the app right now, no install. It is the wasm build of this repository, published from <code>main</code> on every push.
 </p>
 
 > [!IMPORTANT]
@@ -34,7 +39,7 @@ The same design system, feature modules, and data layer produce four application
 | Android | `app/androidApp` | `./gradlew :app:androidApp:installDebug` |
 | iOS | `app/iosApp` | `./scripts/generate-xcodeproj.sh` then open `app/iosApp/NowInAndroid.xcodeproj` |
 | Desktop | `app/desktopApp` | `./gradlew :app:desktopApp:run` |
-| Web | `app/webApp` | `./gradlew :app:webApp:wasmJsBrowserDevelopmentRun` |
+| Web | `app/webApp` | `./gradlew :app:webApp:wasmJsBrowserDevelopmentRun`, or open the [live demo](https://skydoves.github.io/nowinandroid-kmp/) |
 
 The iOS project is generated from `app/iosApp/project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen), and its "Compile Kotlin" build phase runs `:app:shared:embedAndSignAppleFrameworkForXcode`.
 
@@ -108,6 +113,10 @@ Every module above is a Kotlin Multiplatform module whose `commonMain` holds the
 | Open a link | Chrome Custom Tabs | Custom Tabs / `UIApplication.openURL` / `java.awt.Desktop` / `window.open` |
 
 ### Running in a browser
+
+The web demo lives at **[skydoves.github.io/nowinandroid-kmp](https://skydoves.github.io/nowinandroid-kmp/)**.
+[`deploy-web.yml`](.github/workflows/deploy-web.yml) builds `wasmJsBrowserDistribution` on every push
+to `main` and publishes it to GitHub Pages, so the demo is always the current state of the branch.
 
 The wasm target reuses `commonMain` unchanged; `wasmJsMain` joins the same `nonAndroidMain` source
 set as iOS and desktop, so most platform seams are already satisfied. Three things are genuinely
