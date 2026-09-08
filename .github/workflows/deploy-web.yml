@@ -3,6 +3,9 @@ name: Deploy Web
 # Publishes the Kotlin/Wasm build to GitHub Pages, so the app can be tried in a browser without
 # installing anything. Pages allows a single deployment per repository, which is why this workflow
 # owns it and the preview gallery publishes a downloadable artifact instead.
+#
+# There is no gh-pages branch: `deploy-pages` uploads an artifact and serves it directly, and the
+# first run switches the repository's Pages source to GitHub Actions itself.
 
 on:
   push:
@@ -41,7 +44,11 @@ jobs:
       - name: Disable Jekyll processing
         run: touch app/webApp/build/dist/wasmJs/productionExecutable/.nojekyll
 
+      # `enablement` turns Pages on the first time this runs, so the site does not depend on
+      # someone having flipped the source to GitHub Actions in the repository settings by hand.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
