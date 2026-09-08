@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+
+
+<defs>
+
+
+<linearGradient id="primary-tertiary" gradientUnits="userSpaceOnUse" x1="8" y1="8" x2="56" y2="56">
+	<stop  offset="0" style="stop-color:#FFA8FF"/>
+	<stop  offset="1" style="stop-color:#5DD4FB"/>
+</linearGradient>
+</defs>
+
+
+<path fill="none" stroke="url(#primary-tertiary)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M10.2,22.1l4.1-11.8
+	c0.8-2.4,3.1-4,5.7-4h24.7c2.6,0,4.8,1.6,5.7,4l4.1,11.8"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="50.3112" y1="58.6816" x2="50.3832" y2="47.74">
+	<stop  offset="0" style="stop-color:#FFA8FF"/>
+	<stop  offset="1" style="stop-color:#5DD4FB"/>
+</linearGradient>
+
+
+<path fill="none" stroke="url(#primary-tertiary)" stroke-width="2" stroke-miterlimit="10" d="M46.4,48.8h8v4.9c0,2.2-1.8,4-4,4
+	c-2.2,0-4-1.8-4-4V48.8z"/>
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="14.1042" y1="58.6813" x2="14.2111" y2="47.7242">
+	<stop  offset="0" style="stop-color:#FFA8FF"/>
+	<stop  offset="1" style="stop-color:#5DD4FB"/>
+</linearGradient>
+
+
+<path fill="none" stroke="url(#primary-tertiary)" stroke-width="2" stroke-miterlimit="10" d="M10.2,48.8h8v4.9c0,2.2-1.8,4-4,4s-4-1.8-4-4
+	V48.8z"/>
+<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="2.1818" y1="35.7728" x2="61.8182" y2="35.7728">
+	<stop  offset="0" style="stop-color:#FFA8FF"/>
+	<stop  offset="1" style="stop-color:#5DD4FB"/>
+</linearGradient>
+
+
+<path fill="none" stroke="url(#SVGID_4_)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M59.8,48.8h1v-1v-17
+	c0-4.4-3.6-8-8-8H11.2c-4.4,0-8,3.6-8,8v17v1h1H59.8z"/>
+<circle fill="none" stroke="#FF8B5E" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" cx="13.9" cy="34.1" r="4.5"/>
+<circle fill="none" stroke="#FF8B5E" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" cx="49.9" cy="34.1" r="4.5"/>
+</svg>

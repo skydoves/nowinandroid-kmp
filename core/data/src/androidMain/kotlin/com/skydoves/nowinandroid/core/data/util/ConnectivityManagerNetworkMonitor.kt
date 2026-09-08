@@ -1,0 +1,91 @@
+/*
+ * Designed and developed by 2026 skydoves (Jaewoong Eum)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.skydoves.nowinandroid.core.data.util
+
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.ConnectivityManager.NetworkCallback
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest.Builder
+import androidx.core.content.getSystemService
+import com.skydoves.nowinandroid.core.common.network.IoDispatcher
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.ContributesBinding
+import dev.zacsweers.metro.Inject
+import dev.zacsweers.metro.SingleIn
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.flowOn
+
+@Inject
+@SingleIn(AppScope::class)
+@ContributesBinding(AppScope::class)
+class ConnectivityManagerNetworkMonitor(
+    private val context: Context,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+) : NetworkMonitor {
+    override val isOnline: Flow<Boolean> = callbackFlow {
+        val connectivityManager = context.getSystemService<ConnectivityManager>()
+        if (connectivityManager == null) {
+            channel.trySend(false)
+            channel.close()
+            return@callbackFlow
+        }
+
+        /**
+         * The callback's methods are invoked on changes to *any* network matching the
+         * NetworkRequest, not just the active network. So we can simply track the presence (or
+         * absence) of such a Network.
+         */
+        val callback = object : NetworkCallback() {
+
+            private val networks = mutableSetOf<Network>()
+
+            override fun onAvailable(network: Network) {
+                networks += network
+                channel.trySend(true)
+            }
+
+            override fun onLost(network: Network) {
+                networks -= network
+                channel.trySend(networks.isNotEmpty())
+            }
+        }
+
+        val request = Builder()
+            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+            .build()
+        connectivityManager.registerNetworkCallback(request, callback)
+
+        channel.trySend(connectivityManager.isCurrentlyConnected())
+
+        awaitClose {
+            connectivityManager.unregisterNetworkCallback(callback)
+        }
+    }
+        .flowOn(ioDispatcher)
+        .conflate()
+
+    private fun ConnectivityManager.isCurrentlyConnected(): Boolean {
+        val networkCapabilities = getNetworkCapabilities(activeNetwork) ?: return false
+        return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+    }
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+
+
+<defs>
+
+<linearGradient id="primary-secondary" gradientUnits="userSpaceOnUse" x1="8" y1="8" x2="56" y2="56">
+	<stop  offset="0" style="stop-color:#FFA8FF"/>
+	<stop  offset="1" style="stop-color:#FF8B5E"/>
+</linearGradient>
+</defs>
+
+
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="1.2964" y1="35.0495" x2="56.3147" y2="35.0495">
+	<stop  offset="0" style="stop-color:#FFA8FF"/>
+	<stop  offset="0.9857" style="stop-color:#FF8B5E"/>
+</linearGradient>
+<path fill="none" stroke="url(#primary-secondary)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M40.7,8.5H8.3
+	c-3.3,0-6,2.7-6,6v41c0,3.3,2.7,6,6,6h41c3.3,0,6-2.7,6-6V23.1"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="11.1147" y1="22.286" x2="29.8056" y2="22.286">
+	<stop  offset="0" style="stop-color:#FFA8FF"/>
+	<stop  offset="0.9857" style="stop-color:#FF8B5E"/>
+</linearGradient>
+<line fill="none" stroke="url(#primary-secondary)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="12.1" y1="22.3" x2="28.8" y2="22.3"/>
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="11.1147" y1="35.0497" x2="46.4965" y2="35.0497">
+	<stop  offset="0" style="stop-color:#FFA8FF"/>
+	<stop  offset="0.9857" style="stop-color:#FF8B5E"/>
+</linearGradient>
+<line fill="none" stroke="url(#primary-secondary)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="12.1" y1="35" x2="45.5" y2="35"/>
+<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="11.1147" y1="47.8133" x2="46.4965" y2="47.8133">
+	<stop  offset="0" style="stop-color:#FFA8FF"/>
+	<stop  offset="0.9857" style="stop-color:#FF8B5E"/>
+</linearGradient>
+<line fill="none" stroke="url(#primary-secondary)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="12.1" y1="47.8" x2="45.5" y2="47.8"/>
+<path fill="none" stroke="#5DD4FB" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M60.4,19.9l-0.9-4.3l2-3.9
+	c0.4-0.9,0.1-1.9-0.8-2.3l-4-2l-1.9-4c-0.4-0.9-1.4-1.2-2.3-0.9l-4.1,1.8l-4.3-1.1c-0.9-0.2-1.9,0.3-2.1,1.3l-1.1,4.2l-3.5,2.7
+	c-0.8,0.6-0.9,1.7-0.3,2.5l2.7,3.5l-0.1,4.4c0,1,0.8,1.7,1.7,1.8l4.5,0.1l3.5,2.8c0.7,0.6,1.8,0.5,2.5-0.2l2.8-3.4l4.4-0.9
+	C60,21.8,60.7,20.9,60.4,19.9z"/>
+<line fill="none" stroke="#5DD4FB" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="50" y1="9" x2="50" y2="15"/>
+<line fill="none" stroke="#5DD4FB" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="50" y1="19" x2="50" y2="19.1"/>
+</svg>
