@@ -22,25 +22,25 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.core.model)
-            api(compose.runtime)
-            api(compose.foundation)
-            api(compose.material3)
-            api(compose.animation)
-            api(compose.ui)
-            api(compose.components.resources)
+            api(libs.compose.runtime)
+            api(libs.compose.foundation)
+            api(libs.compose.material3)
+            api(libs.compose.animation)
+            api(libs.compose.ui)
+            api(libs.compose.components.resources)
             api(libs.compose.ui.tooling.preview)
             api(libs.compose.material.icons.core)
             api(libs.compose.material.icons.extended)
             api(libs.compose.adaptive)
             api(libs.compose.adaptive.layout)
             api(libs.compose.adaptive.navigation)
-            api(compose.material3AdaptiveNavigationSuite)
+            api(libs.compose.material3.adaptive.navigation.suite)
             api(libs.landscapist.image)
             api(libs.landscapist.placeholder)
             api(libs.landscapist.animation)
         }
         androidMain.dependencies {
-            implementation(compose.uiTooling)
+            implementation(libs.compose.ui.tooling)
         }
         getByName("desktopMain").dependencies {
             implementation(compose.desktop.currentOs)
