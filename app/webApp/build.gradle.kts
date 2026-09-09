@@ -37,9 +37,9 @@ kotlin {
     sourceSets {
         getByName("wasmJsMain").dependencies {
             implementation(projects.app.shared)
-            implementation(compose.runtime)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.components.resources)
             implementation(libs.kotlinx.browser)
         }
     }

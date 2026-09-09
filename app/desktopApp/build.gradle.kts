@@ -30,7 +30,7 @@ kotlin {
     dependencies {
         implementation(projects.app.shared)
         implementation(compose.desktop.currentOs)
-        implementation(compose.components.resources)
+        implementation(libs.compose.components.resources)
         implementation(libs.kotlinx.coroutines.swing)
     }
 }
