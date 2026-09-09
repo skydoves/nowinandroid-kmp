@@ -27,8 +27,6 @@ kotlin {
         // off Android; see TopicScreenErrorTest.
         getByName("nonAndroidTest").dependencies {
             implementation(libs.compose.ui.test)
-            @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-            implementation(compose.uiTest)
         }
     }
 }

@@ -21,7 +21,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(compose.runtime)
+            api(libs.compose.runtime)
             api(libs.androidx.navigation3.runtime)
             api(libs.androidx.navigation3.ui)
             api(libs.androidx.lifecycle.viewmodel.navigation3)

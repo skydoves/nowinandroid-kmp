@@ -80,8 +80,6 @@ kotlin {
         commonTest.dependencies {
             implementation(projects.core.testing)
             implementation(libs.compose.ui.test)
-            @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-            implementation(compose.uiTest)
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.turbine)
