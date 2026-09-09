@@ -41,7 +41,7 @@ kotlinxSerialization = "1.11.0"
 kotlinxImmutable = "0.5.2"
 kotlinxDatetime = "0.8.0"
 
-landscapist = "2.12.1"
+landscapist = "2.13.0"
 composeRuntimeAnnotation = "1.12.0"
 composeNavGraph = "0.2.1"
 hotswan = "2.0.0-beta04"
