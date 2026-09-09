@@ -67,7 +67,6 @@ internal fun Project.configureKotlinMultiplatform(extension: KotlinMultiplatform
         with(sourceSets) {
             all {
                 languageSettings.optIn("kotlin.RequiresOptIn")
-                languageSettings.optIn("kotlin.time.ExperimentalTime")
             }
 
             // Everything Skiko renders: no Android framework, no `android.content.Context`.

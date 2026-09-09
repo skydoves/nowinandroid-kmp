@@ -17,7 +17,7 @@
 package com.skydoves.nowinandroid.ui
 
 import androidx.compose.ui.test.ExperimentalTestApi
-import androidx.compose.ui.test.runComposeUiTest
+import androidx.compose.ui.test.v2.runComposeUiTest
 import com.skydoves.nowinandroid.core.data.repository.CompositeUserNewsResourceRepository
 import com.skydoves.nowinandroid.core.testing.repository.TestNewsRepository
 import com.skydoves.nowinandroid.core.testing.repository.TestUserDataRepository

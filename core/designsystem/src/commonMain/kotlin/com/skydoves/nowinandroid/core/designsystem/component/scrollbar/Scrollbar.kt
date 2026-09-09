@@ -61,12 +61,13 @@ import kotlin.jvm.JvmInline
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import kotlin.time.Duration.Companion.milliseconds
 
 /**
  * The delay between scrolls when a user long presses on the scrollbar track to initiate a scroll
  * instead of dragging the scrollbar thumb.
  */
-private const val SCROLLBAR_PRESS_DELAY_MS = 10L
+private val SCROLLBAR_PRESS_DELAY = 10.milliseconds
 
 /**
  * The percentage displacement of the scrollbar when scrolled by long presses on the scrollbar
@@ -389,7 +390,7 @@ fun Scrollbar(
                 }
                 onThumbMoved(currentThumbMovedPercent)
                 interactionThumbTravelPercent = currentThumbMovedPercent
-                delay(SCROLLBAR_PRESS_DELAY_MS)
+                delay(SCROLLBAR_PRESS_DELAY)
             }
         }
     }
