@@ -55,7 +55,7 @@ fun NiaTab(
     Tab(
         selected = selected,
         onClick = onClick,
-        modifier = modifier,
+        modifier = modifier.cursorHoverIcon(enabled),
         enabled = enabled,
         text = {
             val style = MaterialTheme.typography.labelLarge.copy(textAlign = TextAlign.Center)

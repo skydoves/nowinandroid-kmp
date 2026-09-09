@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.skydoves.nowinandroid.core.designsystem.component.NiaTextButton
+import com.skydoves.nowinandroid.core.designsystem.component.cursorHoverIcon
 import com.skydoves.nowinandroid.core.designsystem.theme.NiaTheme
 import com.skydoves.nowinandroid.core.designsystem.theme.supportsDynamicTheming
 import com.skydoves.nowinandroid.core.model.data.DarkThemeConfig
@@ -242,6 +243,7 @@ fun SettingsDialogThemeChooserRow(text: String, selected: Boolean, onClick: () -
     Row(
         Modifier
             .fillMaxWidth()
+            .cursorHoverIcon()
             .selectable(
                 selected = selected,
                 role = Role.RadioButton,

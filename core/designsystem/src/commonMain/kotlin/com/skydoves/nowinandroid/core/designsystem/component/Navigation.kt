@@ -72,7 +72,7 @@ fun RowScope.NiaNavigationBarItem(
         selected = selected,
         onClick = onClick,
         icon = if (selected) selectedIcon else icon,
-        modifier = modifier,
+        modifier = modifier.cursorHoverIcon(enabled),
         enabled = enabled,
         label = label,
         alwaysShowLabel = alwaysShowLabel,
@@ -133,7 +133,7 @@ fun NiaNavigationRailItem(
         selected = selected,
         onClick = onClick,
         icon = if (selected) selectedIcon else icon,
-        modifier = modifier,
+        modifier = modifier.cursorHoverIcon(enabled),
         enabled = enabled,
         label = label,
         alwaysShowLabel = alwaysShowLabel,
@@ -241,6 +241,7 @@ class NiaNavigationSuiteScope internal constructor(
         selected: Boolean,
         onClick: () -> Unit,
         modifier: Modifier = Modifier,
+        enabled: Boolean = true,
         icon: @Composable () -> Unit,
         selectedIcon: @Composable () -> Unit = icon,
         label: @Composable (() -> Unit)? = null,
@@ -256,7 +257,8 @@ class NiaNavigationSuiteScope internal constructor(
         },
         label = label,
         colors = navigationSuiteItemColors,
-        modifier = modifier,
+        modifier = modifier.cursorHoverIcon(enabled),
+        enabled = enabled,
     )
 }
 

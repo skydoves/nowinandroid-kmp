@@ -53,7 +53,7 @@ fun NiaIconToggleButton(
     FilledIconToggleButton(
         checked = checked,
         onCheckedChange = onCheckedChange,
-        modifier = modifier,
+        modifier = modifier.cursorHoverIcon(enabled),
         enabled = enabled,
         colors = IconButtonDefaults.iconToggleButtonColors(
             checkedContainerColor = MaterialTheme.colorScheme.primaryContainer,

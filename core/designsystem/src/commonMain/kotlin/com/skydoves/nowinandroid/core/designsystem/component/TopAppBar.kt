@@ -49,7 +49,10 @@ fun NiaTopAppBar(
     CenterAlignedTopAppBar(
         title = { Text(text = stringResource(titleRes)) },
         navigationIcon = {
-            IconButton(onClick = onNavigationClick) {
+            IconButton(
+                onClick = onNavigationClick,
+                modifier = Modifier.cursorHoverIcon(),
+            ) {
                 Icon(
                     imageVector = navigationIcon,
                     contentDescription = navigationIconContentDescription,
@@ -58,7 +61,10 @@ fun NiaTopAppBar(
             }
         },
         actions = {
-            IconButton(onClick = onActionClick) {
+            IconButton(
+                onClick = onActionClick,
+                modifier = Modifier.cursorHoverIcon(),
+            ) {
                 Icon(
                     imageVector = actionIcon,
                     contentDescription = actionIconContentDescription,

@@ -59,6 +59,7 @@ import com.skydoves.landscapist.image.LandscapistImage
 import com.skydoves.landscapist.placeholder.shimmer.ShimmerPlugin
 import com.skydoves.nowinandroid.core.designsystem.component.NiaIconToggleButton
 import com.skydoves.nowinandroid.core.designsystem.component.NiaTopicTag
+import com.skydoves.nowinandroid.core.designsystem.component.cursorHoverIcon
 import com.skydoves.nowinandroid.core.designsystem.component.rememberNiaShimmer
 import com.skydoves.nowinandroid.core.designsystem.generated.resources.core_designsystem_ic_placeholder_default
 import com.skydoves.nowinandroid.core.designsystem.icon.NiaIcons
@@ -118,6 +119,7 @@ fun NewsResourceCardExpanded(
         // Use custom label for accessibility services to communicate button's action to user.
         // Pass null for action to only override the label and not the actual action.
         modifier = modifier
+            .cursorHoverIcon()
             .semantics {
                 onClick(label = clickActionLabel, action = null)
             }

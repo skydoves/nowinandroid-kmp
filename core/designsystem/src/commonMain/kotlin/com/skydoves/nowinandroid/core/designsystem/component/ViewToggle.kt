@@ -57,7 +57,7 @@ fun NiaViewToggleButton(
 ) {
     TextButton(
         onClick = { onExpandedChange(!expanded) },
-        modifier = modifier,
+        modifier = modifier.cursorHoverIcon(enabled),
         enabled = enabled,
         colors = ButtonDefaults.textButtonColors(
             contentColor = MaterialTheme.colorScheme.onBackground,

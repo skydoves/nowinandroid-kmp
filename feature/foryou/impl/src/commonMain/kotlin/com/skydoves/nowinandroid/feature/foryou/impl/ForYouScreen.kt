@@ -79,6 +79,7 @@ import com.skydoves.nowinandroid.core.designsystem.component.DynamicAsyncImage
 import com.skydoves.nowinandroid.core.designsystem.component.NiaButton
 import com.skydoves.nowinandroid.core.designsystem.component.NiaIconToggleButton
 import com.skydoves.nowinandroid.core.designsystem.component.NiaOverlayLoadingWheel
+import com.skydoves.nowinandroid.core.designsystem.component.cursorHoverIcon
 import com.skydoves.nowinandroid.core.designsystem.component.scrollbar.DecorativeScrollbar
 import com.skydoves.nowinandroid.core.designsystem.component.scrollbar.DraggableScrollbar
 import com.skydoves.nowinandroid.core.designsystem.component.scrollbar.rememberDraggableScroller
@@ -390,7 +391,8 @@ private fun SingleTopicButton(
     Surface(
         modifier = Modifier
             .width(312.dp)
-            .heightIn(min = 56.dp),
+            .heightIn(min = 56.dp)
+            .cursorHoverIcon(),
         shape = RoundedCornerShape(corner = CornerSize(8.dp)),
         color = MaterialTheme.colorScheme.surface,
         selected = isSelected,

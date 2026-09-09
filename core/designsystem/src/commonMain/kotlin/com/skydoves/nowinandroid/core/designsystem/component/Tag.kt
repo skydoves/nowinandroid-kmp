@@ -45,6 +45,7 @@ fun NiaTopicTag(
         }
         TextButton(
             onClick = onClick,
+            modifier = Modifier.cursorHoverIcon(enabled),
             enabled = enabled,
             colors = ButtonDefaults.textButtonColors(
                 containerColor = containerColor,
