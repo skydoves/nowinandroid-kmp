@@ -29,7 +29,7 @@ import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.NavigationRailItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteDefaults
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteItemColors
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
@@ -72,7 +72,7 @@ fun RowScope.NiaNavigationBarItem(
         selected = selected,
         onClick = onClick,
         icon = if (selected) selectedIcon else icon,
-        modifier = modifier,
+        modifier = modifier.cursorHoverIcon(enabled),
         enabled = enabled,
         label = label,
         alwaysShowLabel = alwaysShowLabel,
@@ -133,7 +133,7 @@ fun NiaNavigationRailItem(
         selected = selected,
         onClick = onClick,
         icon = if (selected) selectedIcon else icon,
-        modifier = modifier,
+        modifier = modifier.cursorHoverIcon(enabled),
         enabled = enabled,
         label = label,
         alwaysShowLabel = alwaysShowLabel,
@@ -183,11 +183,11 @@ fun NiaNavigationRail(
 fun NiaNavigationSuiteScaffold(
     navigationSuiteItems: NiaNavigationSuiteScope.() -> Unit,
     modifier: Modifier = Modifier,
-    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2(),
     content: @Composable () -> Unit,
 ) {
     val layoutType = NavigationSuiteScaffoldDefaults
-        .calculateFromAdaptiveInfo(windowAdaptiveInfo)
+        .navigationSuiteType(windowAdaptiveInfo)
     val navigationSuiteItemColors = NavigationSuiteItemColors(
         navigationBarItemColors = NavigationBarItemDefaults.colors(
             selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
@@ -241,6 +241,7 @@ class NiaNavigationSuiteScope internal constructor(
         selected: Boolean,
         onClick: () -> Unit,
         modifier: Modifier = Modifier,
+        enabled: Boolean = true,
         icon: @Composable () -> Unit,
         selectedIcon: @Composable () -> Unit = icon,
         label: @Composable (() -> Unit)? = null,
@@ -256,7 +257,8 @@ class NiaNavigationSuiteScope internal constructor(
         },
         label = label,
         colors = navigationSuiteItemColors,
-        modifier = modifier,
+        modifier = modifier.cursorHoverIcon(enabled),
+        enabled = enabled,
     )
 }
 

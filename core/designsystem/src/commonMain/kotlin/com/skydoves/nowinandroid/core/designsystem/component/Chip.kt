@@ -57,7 +57,7 @@ fun NiaFilterChip(
                 label()
             }
         },
-        modifier = modifier,
+        modifier = modifier.cursorHoverIcon(enabled),
         enabled = enabled,
         leadingIcon = if (selected) {
             {

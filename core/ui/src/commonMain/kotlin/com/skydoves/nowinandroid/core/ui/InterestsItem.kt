@@ -35,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.skydoves.nowinandroid.core.designsystem.component.DynamicAsyncImage
 import com.skydoves.nowinandroid.core.designsystem.component.NiaIconToggleButton
+import com.skydoves.nowinandroid.core.designsystem.component.cursorHoverIcon
 import com.skydoves.nowinandroid.core.designsystem.icon.NiaIcons
 import com.skydoves.nowinandroid.core.designsystem.theme.NiaTheme
 import com.skydoves.nowinandroid.core.ui.generated.resources.Res
@@ -94,6 +95,7 @@ fun InterestsItem(
             },
         ),
         modifier = modifier
+            .cursorHoverIcon()
             .semantics(mergeDescendants = true) {
                 selected = isSelected
             }

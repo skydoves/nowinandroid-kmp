@@ -80,6 +80,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.github.skydoves.navgraph.annotations.NavDestination
 import com.github.skydoves.navgraph.annotations.NavEdge
+import com.skydoves.nowinandroid.core.designsystem.component.cursorHoverIcon
 import com.skydoves.nowinandroid.core.designsystem.component.scrollbar.DraggableScrollbar
 import com.skydoves.nowinandroid.core.designsystem.component.scrollbar.rememberDraggableScroller
 import com.skydoves.nowinandroid.core.designsystem.component.scrollbar.scrollbarState
@@ -448,6 +449,7 @@ private fun RecentSearchesBody(
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier
                         .padding(vertical = 16.dp)
+                        .cursorHoverIcon()
                         .clickable { onRecentSearchClicked(recentSearch) }
                         .fillMaxWidth(),
                 )
@@ -468,7 +470,10 @@ private fun SearchToolbar(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier.fillMaxWidth(),
     ) {
-        IconButton(onClick = { onBackClick() }) {
+        IconButton(
+            onClick = { onBackClick() },
+            modifier = Modifier.cursorHoverIcon(),
+        ) {
             Icon(
                 imageVector = NiaIcons.ArrowBack,
                 contentDescription = stringResource(
@@ -519,6 +524,7 @@ private fun SearchTextField(
                     onClick = {
                         onSearchQueryChanged("")
                     },
+                    modifier = Modifier.cursorHoverIcon(),
                 ) {
                     Icon(
                         imageVector = NiaIcons.Close,
