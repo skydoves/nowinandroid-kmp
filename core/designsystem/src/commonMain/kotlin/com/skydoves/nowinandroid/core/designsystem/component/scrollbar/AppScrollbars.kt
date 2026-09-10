@@ -58,11 +58,12 @@ import com.skydoves.nowinandroid.core.designsystem.component.scrollbar.ThumbStat
 import com.skydoves.nowinandroid.core.designsystem.component.scrollbar.ThumbState.Dormant
 import com.skydoves.nowinandroid.core.designsystem.component.scrollbar.ThumbState.Inactive
 import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * The time period for showing the scrollbar thumb after interacting with it, before it fades away
  */
-private const val SCROLLBAR_INACTIVE_TO_DORMANT_TIME_IN_MS = 2_000L
+private val SCROLLBAR_INACTIVE_TO_DORMANT_TIME = 2.seconds
 
 /**
  * A [Scrollbar] that allows for fast scrolling of content by dragging its thumb.
@@ -228,7 +229,7 @@ private fun scrollbarThumbColor(scrollableState: ScrollableState, interactionSou
             true -> state = Active
             false -> if (state == Active) {
                 state = Inactive
-                delay(SCROLLBAR_INACTIVE_TO_DORMANT_TIME_IN_MS)
+                delay(SCROLLBAR_INACTIVE_TO_DORMANT_TIME)
                 state = Dormant
             }
         }
